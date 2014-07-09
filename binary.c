@@ -8,7 +8,7 @@ int main(void)
     printf("Enter an integer (q to quit):\n");
     while (scanf("%lu", &number) == 1)
     {
-        printf("Binary equivalent: 00000000\b\b\b\b\b\b\b\b");
+        printf("Binary equivalent: ");
         to_binary(number);
         putchar('\n');
         printf("Enter an integer (q to quit):\n");
