@@ -4,7 +4,7 @@
     * Name: Estevan Hernandez
     * Date Created: June 25, 2014
     *
- 	* a program for a double elim bracket
+ 	* a program for a double elim bracket TEST
     *************************************************/
 
 #include <stdio.h>
