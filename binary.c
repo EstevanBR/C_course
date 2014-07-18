@@ -25,6 +25,7 @@ void to_binary(unsigned long n)   /* recursive function */
     r = n % 2;
     if (n >= 2)
        to_binary(n / 2);
+
     putchar('0' + r);
 
     return;
