@@ -4,19 +4,24 @@
     * Name: Estevan Hernandez
     * Date Created: June 25, 2014
     *
- 	* a program for a double elim bracket TEST
+ 	* a program for a double elim bracket
     *************************************************/
 
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdbool.h>
 #include <signal.h>
 int getplayers(void);
+int getnames(void);
+int gettags(void);
 int getsetups(void);
 int check_if_odd(int num);
 int iscorrect(int num);
-int getseed(void);
+int getseed(int num);
+bool IsPowerOfTwo(int x);
+
 int main(void)
 {
 
@@ -49,12 +54,14 @@ int main(void)
 	
 	amountofplayers = getplayers();
 	setups = getsetups();
+	
 	int poolsamountchoice[amountofplayers];
 	int poolsizechoice[amountofplayers];
 	char playernames[amountofplayers][11];
 	char playertags[amountofplayers][6];
 	int playerindex[amountofplayers][amountofplayers][amountofplayers];
 
+	/*
 	for(i = 0; i < amountofplayers; ++i)
 	{
 		printf("Please enter name for player %d ", i+1);
@@ -79,6 +86,7 @@ int main(void)
 	{
 		printf("Player %d is \"%s\" and their tag is \"%s\"\n", i+1, playernames[i], playertags[i]);
 	}
+	*/
 	
 	printf("Please enter desired \"Best of\" number for pools:\n");
 	scanf(" %d", &bestofpools);
@@ -93,16 +101,18 @@ int main(void)
 	printf("Please enter the time limit (or average match time) for each match in minutes\n");
 	scanf("%f", &matchtimelimit);
 	
-	bracketseed = getseed();
+	bracketseed = getseed(amountofplayers);
 
 	printf("\n\nTo seed a bracket of %d players from %d initial players in the given amount of time, there needs to be:\n", bracketseed, amountofplayers);
 	for (poolsindex = 0, poolsize = amountofplayers, amountofpools = 1, i = 0;
 		poolsize >= 1 && (bracketseed / amountofpools) >= 1 && poolsize >= 2;
-		amountofpools++, poolsindex++)
+		amountofpools*=2, poolsindex++)
 	{
 		//if (amountofpools % 2 == 0 || amountofpools == 1)
 		//{
 			poolsize = amountofplayers / amountofpools;
+			if ((poolsize * amountofpools) < amountofplayers)
+				poolsize++;
 			setsperpool = (poolsize * (poolsize+1))/2;
 			totalpoolssets = setsperpool * amountofpools;
 			poollength = (((setsperpool * bestofpools * matchtimelimit)/60)/setups);
@@ -116,8 +126,8 @@ int main(void)
 				printf("\nFORMAT: %c\n", (i + 'A'));
 				printf("%d pools\n", amountofpools);
 				printf("%d amount of players each\n", poolsize);
-				printf("With the top %d players of each pool advancing to bracket\n\n", bracketseed / amountofpools);
-				printf("Which would be %d max sets that must be played in each pool and take max %.2f hrs. to complete per pool\n",
+				printf("With the top %d players of each pool advancing to bracket\n", bracketseed / amountofpools);
+				printf("Which would be %d max sets that must be played in each pool\nand take max %.2f hrs. to complete per pool\n",
 					setsperpool, poollength);
 				printf("Which would be %d max sets that must be played for all pools, which would take %.2f hrs. to complete before bracket is seeded\n",
 					totalpoolssets, poolslength);
@@ -139,7 +149,7 @@ int main(void)
 
 	printf("\n\n\nDISCLAIMER:\nALL CALCULATIONS ARE ESITMATES AND DO NOT FACTOR IN -\n"
 		"TIME TAKEN BETWEEN GAMES/SETS/MATCHES. EX: TIME TAKEN TO FIND PLAYERS.\n");
-	/*POOLS MANAGER*/
+	/*POOLS MANAGER test*/
 	/*
 	code needs to:
 	manage who plays who in each pool
@@ -200,7 +210,7 @@ int iscorrect(int i)
 	return i;
 }
 
-int getseed()
+int getseed(int num)
 {
 	int bracketchoice;
 	int bracketseed;
@@ -208,7 +218,8 @@ int getseed()
 	printf("\nPlease choose amount of players you would like to seed into the bracket:\n"
 		"4\t\t\t8\n"
 		"16\t\t\t32\n"
-		"64\t\t\t128\n");
+		"64\t\t\t128\n"
+		"remember, there are %d initial players\n", num);
 	scanf("%d", &bracketchoice);
 	switch(bracketchoice){
 		case 4:
@@ -231,4 +242,21 @@ int getseed()
 		break;
 	}
 	return bracketseed;
+}
+
+bool IsPowerOfTwo(int x)
+{
+    return (x & (x - 1)) == 0;
+}
+
+int getnames(void)
+{
+	
+	return 0;
+}
+
+int gettags(void)
+{
+	
+	return 0;
 }
