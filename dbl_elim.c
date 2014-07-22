@@ -14,8 +14,8 @@
 #include <stdbool.h>
 #include <signal.h>
 int getplayers(void);
-int getnames(void);
-int gettags(void);
+//int getnames(void);
+int gettags(int * add, int i);
 int getsetups(void);
 int check_if_odd(int num);
 int iscorrect(int num);
@@ -57,10 +57,16 @@ int main(void)
 	
 	int poolsamountchoice[amountofplayers];
 	int poolsizechoice[amountofplayers];
-	char playernames[amountofplayers][11];
+	//char playernames[amountofplayers][11];
 	char playertags[amountofplayers][6];
 	int playerindex[amountofplayers][amountofplayers][amountofplayers];
-
+	int * address;
+	for (i = 0; i <= amountofplayers; i++)
+	{
+		address = &playertags[i];
+		gettags(int * add, int i);
+	}
+	
 	/*
 	for(i = 0; i < amountofplayers; ++i)
 	{
@@ -249,14 +255,11 @@ bool IsPowerOfTwo(int x)
     return (x & (x - 1)) == 0;
 }
 
-int getnames(void)
-{
-	
-	return 0;
-}
-
 int gettags(void)
 {
-	
-	return 0;
+	printf("Smashtag for player %d\n", num +1);
+	scanf("%5s", add);
+	while (getchar() != '\n')
+		continue;
+	return 0;	
 }
