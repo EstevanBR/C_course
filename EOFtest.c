@@ -2,6 +2,11 @@
 #include <stdio.h>
 int main(void)
 {
-	printf("Hello, this is a test. Thank you and goodbye.\n");
+	int ch;
+	while ((ch = getchar()))
+	{	
+		
+		putchar(ch);
+	}
 	return 0;
 }
