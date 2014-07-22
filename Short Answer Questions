@@ -1,0 +1,43 @@
+Short Answer Questions
+----------------------
+
+1. Suppose that you are using getchar() and putchar() to write a C program that copies from an input file to an output file, one character at a time. Should you copy the EOF character to the output file? Why or why not?
+2. Write a function declaration (prototype) for a function magnitude() that takes a single argument of data type "integer" and returns an int. The function definition is NOT required, only the prototype.
+3. Write a function declaration (prototype) for a function smallest() that takes two arguments of data type "double" and returns a double.
+4. Write a function declaration (prototype) for the function prtbox() takes no arguments and returns nothing.
+5. Why can an actual argument be any expression with an appropriate type of value, but a formal argument can only be a variable?
+6. In your own words, describe what a pointer variable is and identify at least one way they are used in the C language.
+7. Declare a pointer variable called "size" that is a pointer to an integer variable.
+8. Declare a pointer variable called "water_termperature" that is a pointer to a float variable.
+9. Explain in your own words what global variables are (provide example code) and explain how and why they might be used.
+10. Why are global variables dangerous, and why should they be not be used whenever possible?
+
+Programming Assignment
+----------------------
+
+1.
+Write a program that prompts the user to enter in characters, an equal sign, and an integer.  The program then reads and discards all characters from standard input using getchar() until it encounters the "=".  The program then reads the integer value that follows the "=" using scanf() and outputs the value back to the user.  For example:
+
+Enter some text, equal sign and an integer: The number = 16439 
+The integer you entered is:   16439
+
+2.
+Write a program that prompts the user to enter two values of data type "double".  Implement a function called print_doubles() that takes the two arguments of data type "double" and uses printf() to display both.
+
+3.
+Write a program that prompts the user to enter in a character and an integer.  Implement a function called repeat_character() that takes the two arguments (character and an integer) entered by the user and displays the character by duplicating it the integer number of times on the screen with a single space between the characters.   For example:
+
+Enter a character and a number: A 7
+A A A A A A A
+
+4.
+Write a program that prompts the user to enter in two "long" values. Implements a function called negative_count() that takes two arguments of data type "long" and returns an integer that is the number of arguments that were negative. The function main() then displays the result. For example:
+
+Enter two integers of data type "long": -1264364007 -2012334695
+Number of negative number entered 2
+
+5.
+Write a program that prompts the user to enter in two integers.  Implement a function called max_value() that takes two arguments that are pointers to two integers entered by the user.  The function max_value() determines which of the two values is the largest and assigns the max value to both variables.  The function main()then displays the values of both variables to demonstrate that they both contain the max value.  For example:
+
+Enter two integers:     23  57 
+Both values are now: 57  57

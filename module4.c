@@ -12,10 +12,10 @@ d. function4() takes no arguments but returns one argument
 
 #include <stdio.h>
 #include <ctype.h>
-void beeper(void);
-void beeps(int amount);
-int floorsum(float num, float num2);
-char getsize(void);
+void beeper(void); /* prints a beep */
+void beeps(int amount); /* prints beeps */
+int floorSum(float num, float num2); /* adds two numbers and returns the floor of the sum ex. 5.3 + 5.3 = 10.6 but function returns 10 */
+char firstLett(void); /* returns the first letter of a string entered by the user. */
 void clear(void);
 int main(void)
 {
@@ -24,8 +24,8 @@ int main(void)
 	printf("please enter how many beeps_\n");
 	scanf("%d", &i);
 	beeps(i);
-	printf("# of beeps + 10 = %d\n", floorsum(i, 10));
-	printf("You chose %c\n", getsize());
+	printf("# of beeps + 10 = %d\n", floorSum(i, 10));
+	printf("The first letter is: %c\n", firstLett());
 
 	return 0;
 }
@@ -40,15 +40,14 @@ void beeps(int amount)
 	for (i = 0; i < amount; i++)
 		printf("\007");
 }
-int floorsum(float num, float num2)
+int floorSum(float num, float num2)
 {
 	return num + num2;
 }
-char getsize(void)
+char firstLett(void)
 {
 	char choice;
-	printf("Please enter the letter corresponding to the desired shirt size:\n"
-		   "A: small\t\tB: Medium\nC: Large\t\tD: Extra Large\nE: Extra Extra Large\n");
+	printf("Please enter text\n");
 	clear();
 	choice = getchar();
 	clear();
