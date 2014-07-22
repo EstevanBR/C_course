@@ -15,7 +15,7 @@
 #include <signal.h>
 int getplayers(void);
 //int getnames(void);
-int gettags(int * add, int i);
+int gettags(int * add, int num);
 int getsetups(void);
 int check_if_odd(int num);
 int iscorrect(int num);
@@ -61,10 +61,14 @@ int main(void)
 	char playertags[amountofplayers][6];
 	int playerindex[amountofplayers][amountofplayers][amountofplayers];
 	int * address;
-	for (i = 0; i <= amountofplayers; i++)
+	for (i = 0; i < amountofplayers; i++)
 	{
 		address = &playertags[i];
-		gettags(int * add, int i);
+		gettags(address, i);
+	}
+	for (i = 0; i < amountofplayers; i++)
+	{
+		printf("%s\n", playertags[i]);
 	}
 	
 	/*
@@ -255,7 +259,7 @@ bool IsPowerOfTwo(int x)
     return (x & (x - 1)) == 0;
 }
 
-int gettags(void)
+int gettags(int * add, int num)
 {
 	printf("Smashtag for player %d\n", num +1);
 	scanf("%5s", add);
