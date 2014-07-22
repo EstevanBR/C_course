@@ -1,16 +1,42 @@
-Short Answer Questions
+ Short Answer Questions
 ----------------------
 
 1. Suppose that you are using getchar() and putchar() to write a C program that copies from an input file to an output file, one character at a time. Should you copy the EOF character to the output file? Why or why not?
+
+No. If you include EOF, it will try to 'put' a character with that ASCII code. Because EOF is often -1 which does not correspond to any valid ASCII code, it will try to output a character into the file. When outputting to a file, the EOF is already added. There is no need to copy it with getchar() anyways.
+
 2. Write a function declaration (prototype) for a function magnitude() that takes a single argument of data type "integer" and returns an int. The function definition is NOT required, only the prototype.
+int magnitude(int num);
+
 3. Write a function declaration (prototype) for a function smallest() that takes two arguments of data type "double" and returns a double.
+double smallest(double num, double num2);
+
 4. Write a function declaration (prototype) for the function prtbox() takes no arguments and returns nothing.
+void prtbox(void);
+
 5. Why can an actual argument be any expression with an appropriate type of value, but a formal argument can only be a variable?
+A function is fed actual arguments, which it then uses privately. The formal argument, when prototyping a function, has to be variable, because there would be no way to reference or use it within the function if it were a constant.
+
 6. In your own words, describe what a pointer variable is and identify at least one way they are used in the C language.
+An int/float/double variable = the value
+A pointer = where it is in memory.
+scanf(); uses a pointer
+All of the variables within a function are private to that function, because variables are local to functions (excluding global variables) it needs to know where to store the user input. A pointer is a way to allow a function access to variables that exist in another function such as main(); or to be more specific. It gives the function knowledge of where the address of the variable is so it can be manipulated.
+
 7. Declare a pointer variable called "size" that is a pointer to an integer variable.
+int * size;
+
 8. Declare a pointer variable called "water_termperature" that is a pointer to a float variable.
+int * water_termperature; /*there is a typo in the question*/
+
 9. Explain in your own words what global variables are (provide example code) and explain how and why they might be used.
+Global variables are variables that are declared outside of any function. they can be used by any function without pointers or passing the value in an argument when calling a function.
+It is hard for me to think of when they could be used where #define would not suffice.
+But perhaps in a program that is being writted to organize an event. Where the amount of guests wouldn't be changed, it might be viewed as more convenient to just make int guests = 100; a global variable.
+So that you don't have to pass it to all of your functions and use pointers.
+
 10. Why are global variables dangerous, and why should they be not be used whenever possible?
+If any function can modify a variable, its more likely to cause unexpected behaviour.
 
 Programming Assignment
 ----------------------
