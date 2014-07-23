@@ -17,7 +17,7 @@ int main(void)
 {
 	int num;
 	printf("Please enter some text, followed by an equals sign and lastly and integer:\n");
-	while((getchar() != '='))
+	while((getchar() != '=')) // skips text until the equals sign
 		continue;
 	scanf("%d", &num);
 	printf("the integer you entered is: %d\n", num);
