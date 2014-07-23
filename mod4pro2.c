@@ -16,7 +16,7 @@ int main(void)
 {
 	double first, second;
 
-    printf("Please enter 2 numbers with a fractional part: ");
+    printf("Please enter 2 numbers with a fractional part,\nFirst number: ");
     scanf("%lf", &first);
     printf("Now enter the second number: ");
     scanf("%lf", &second);
