@@ -6,7 +6,6 @@
     *
  	* a program for a double elim bracket
     *************************************************/
-
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -14,7 +13,6 @@
 #include <stdbool.h>
 #include <signal.h>
 int getplayers(void);
-//int getnames(void);
 int gettags(int * add, int num);
 int getsetups(void);
 int check_if_odd(int num);
@@ -31,7 +29,6 @@ int main(void)
 	float tourneylength;		/*how long it will take for the entire tournament*/
 	float poollength;			/*how long each pool will take*/
 	float bracketlength;		/*how long it will take to finish bracket (seed -> GF)*/
-
 	int poolsindex;	
 	int i;
 	int j;
@@ -47,108 +44,73 @@ int main(void)
 	int setups;					/*how many sets for all brackets*/
 	int player1;
 	int player2;
-	
 	char bracketchoice;			/*user can choose between 4 bracket sizes, 4, 8, 16, 32*/
 	char bestofpoolschoice;		/*user can choose between best of 3, 5, or 7 matches POOLS*/
 	char bestofbracketchoice;	/*user can choose between best of 3, 5, or 7 matches BRACKET*/
-	
+
 	amountofplayers = getplayers();
 	setups = getsetups();
-	
+
 	int poolsamountchoice[amountofplayers];
 	int poolsizechoice[amountofplayers];
-	//char playernames[amountofplayers][11];
-	char playertags[amountofplayers][6];
-	int playerindex[amountofplayers][amountofplayers][amountofplayers];
+	int playerindex[amountofplayers][6];
 	int * address;
+
 	for (i = 0; i < amountofplayers; i++)
 	{
-		address = &playertags[i];
+		address = &playerindex[i];
 		gettags(address, i);
 	}
 	for (i = 0; i < amountofplayers; i++)
 	{
-		printf("%s\n", playertags[i]);
+		printf("player %d's tag is %s\n", i+1, playerindex[i]);
 	}
-	
-	/*
-	for(i = 0; i < amountofplayers; ++i)
-	{
-		printf("Please enter name for player %d ", i+1);
-		printf("NAME: __________\b\b\b\b\b\b\b\b\b\b");
-		scanf("%10s", playernames[i]);
-		//i = iscorrect(i);
-		while (getchar() != '\n')
-			continue;
-	}
-
-	for(i = 0; i < amountofplayers; i++)
-	{
-		printf("Please enter smash tag for %s [player %d] ", playernames[i], i+1);
-		printf("TAG: ____\b\b\b\b\b");
-		scanf("%5s", playertags[i]);
-		while (getchar() != '\n')
-			continue;
-		//i = iscorrect(i);
-	}
-
-	for(i = 0; i < amountofplayers; i++)
-	{
-		printf("Player %d is \"%s\" and their tag is \"%s\"\n", i+1, playernames[i], playertags[i]);
-	}
-	*/
 	
 	printf("Please enter desired \"Best of\" number for pools:\n");
 	scanf(" %d", &bestofpools);
 	bestofpools = check_if_odd(bestofpools);
 	printf("You have chosen best of %d for pools\n", bestofpools);
-
 	printf("Please enter desired \"Best of\" number for bracket:\n");
 	scanf(" %d", &bestofbracket);
 	bestofbracket = check_if_odd(bestofbracket);
 	printf("You have chosen best of %d for bracket\n", bestofbracket);
-
 	printf("Please enter the time limit (or average match time) for each match in minutes\n");
 	scanf("%f", &matchtimelimit);
-	
 	bracketseed = getseed(amountofplayers);
-
 	printf("\n\nTo seed a bracket of %d players from %d initial players in the given amount of time, there needs to be:\n", bracketseed, amountofplayers);
+
 	for (poolsindex = 0, poolsize = amountofplayers, amountofpools = 1, i = 0;
 		poolsize >= 1 && (bracketseed / amountofpools) >= 1 && poolsize >= 2;
 		amountofpools*=2, poolsindex++)
 	{
-		//if (amountofpools % 2 == 0 || amountofpools == 1)
-		//{
-			poolsize = amountofplayers / amountofpools;
-			if ((poolsize * amountofpools) < amountofplayers)
-				poolsize++;
-			setsperpool = (poolsize * (poolsize+1))/2;
-			totalpoolssets = setsperpool * amountofpools;
-			poollength = (((setsperpool * bestofpools * matchtimelimit)/60)/setups);
-			poolslength = (((totalpoolssets * bestofpools * matchtimelimit)/60)/setups);
-			setsinbracket = ((bracketseed * 2)-1);
-			bracketlength = ((setsinbracket * bestofbracket * matchtimelimit)/60/setups);
-			tourneylength = poolslength + bracketlength;
+		poolsize = amountofplayers / amountofpools;
+		if ((poolsize * amountofpools) < amountofplayers)
+			poolsize++;
+		setsperpool = (poolsize * (poolsize+1))/2;
+		totalpoolssets = setsperpool * amountofpools;
+		poollength = (((setsperpool * bestofpools * matchtimelimit)/60)/setups);
+		poolslength = (((totalpoolssets * bestofpools * matchtimelimit)/60)/setups);
+		setsinbracket = ((bracketseed * 2)-1);
+		bracketlength = ((setsinbracket * bestofbracket * matchtimelimit)/60/setups);
+		tourneylength = poolslength + bracketlength;
 
-			if (poolsize > 2)//&& (poolsize * amountofpools) >= amountofplayers)
-			{
-				printf("\nFORMAT: %c\n", (i + 'A'));
-				printf("%d pools\n", amountofpools);
-				printf("%d amount of players each\n", poolsize);
-				printf("With the top %d players of each pool advancing to bracket\n", bracketseed / amountofpools);
-				printf("Which would be %d max sets that must be played in each pool\nand take max %.2f hrs. to complete per pool\n",
-					setsperpool, poollength);
-				printf("Which would be %d max sets that must be played for all pools, which would take %.2f hrs. to complete before bracket is seeded\n",
-					totalpoolssets, poolslength);
-				printf("With %d sets in bracket, the entire tournament would take %.2f hrs.\n", setsinbracket, tourneylength);
-				times[i] = tourneylength;
-				i++;
-			}
-			
-			if ((bracketseed / amountofpools) == 1)
-				break;
-		//}
+		if (poolsize > 2)
+		{
+			printf("\nFORMAT: %c\n", (i + 'A'));
+			printf("%d pools\n", amountofpools);
+			printf("%d amount of players each\n", poolsize);
+			printf("With the top %d players of each pool advancing to bracket\n", bracketseed / amountofpools);
+			printf("Which would be %d max sets that must be played in each pool\nand take max %.2f hrs. to complete per pool\n",
+				setsperpool, poollength);
+			printf("Which would be %d max sets that must be played for all pools, which would take %.2f hrs. to complete before bracket is seeded\n",
+				totalpoolssets, poolslength);
+			printf("With %d sets in bracket, the entire tournament would take %.2f hrs.\n", setsinbracket, tourneylength);
+			times[i] = tourneylength;
+			i++;
+		}
+		
+		if ((bracketseed / amountofpools) == 1)
+			break;
 	}
 	printf("\n\nChoices of:");
 	for(i = 0 ; i <= poolsindex && times[i] != 0;)
@@ -159,17 +121,6 @@ int main(void)
 
 	printf("\n\n\nDISCLAIMER:\nALL CALCULATIONS ARE ESITMATES AND DO NOT FACTOR IN -\n"
 		"TIME TAKEN BETWEEN GAMES/SETS/MATCHES. EX: TIME TAKEN TO FIND PLAYERS.\n");
-	/*POOLS MANAGER test*/
-	/*
-	code needs to:
-	manage who plays who in each pool
-	keep track of who wins each set
-	LATER FEATURE: keep track of stock count at the end of the match
-	make sure 2 people aren't assigned to play eachother more than once
-	eg: player A vs B and player B vs A don't happen
-	make sure a player isn't assigned to play themselves:
-	eg: player A vs player A
-	*/
 
 	return 0;
 }
