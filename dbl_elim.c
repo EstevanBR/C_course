@@ -50,20 +50,24 @@ int main(void)
 
 	amountofplayers = getplayers();
 	setups = getsetups();
-
+	int primes[] =
+	{2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,233,239,241,251,257,263,269,271,277,281,283,293,307,311,313,317,331,337,347,349,353,359,367,373,379,383,389,397,401,409,419,421,431,433,439,443,449,457,461,463,467,479,487,491,499,503,509,521,523,541,547,557,563,569,571,577,587,593,599,601,607,613,617,619,631,641,643,647,653,659,661,673,677,683,691,701,709,719,727,733,739,743,751,757,761,769,773,787,797,809,811,821,823,827,829,839,853,857,859,863,877,881,883,887,907,911,919,929,937,941,947,953,967,971,977,983,991,997};
 	int poolsamountchoice[amountofplayers];
-	int poolsizechoice[amountofplayers];
-	int playerindex[amountofplayers][6];
+	int poolsizechoice['Z'][2];
+	int playertags[amountofplayers][6];
+	int playerid[amountofplayers];
+	int playerpool[amountofplayers];
 	int * address;
 
 	for (i = 0; i < amountofplayers; i++)
 	{
-		address = &playerindex[i];
+		address = &playertags[i];
 		gettags(address, i);
+		playerid[i] = primes[i];
 	}
 	for (i = 0; i < amountofplayers; i++)
 	{
-		printf("player %d's tag is %s\n", i+1, playerindex[i]);
+		printf("player %d's tag is %s their id is %d\n", i+1, playertags[i], playerid[i]);
 	}
 	
 	printf("Please enter desired \"Best of\" number for pools:\n");
@@ -106,6 +110,8 @@ int main(void)
 				totalpoolssets, poolslength);
 			printf("With %d sets in bracket, the entire tournament would take %.2f hrs.\n", setsinbracket, tourneylength);
 			times[i] = tourneylength;
+			poolsizechoice[i][0] = poolsize;
+			poolsizechoice[i][1] = amountofpools;
 			i++;
 		}
 		
@@ -115,7 +121,8 @@ int main(void)
 	printf("\n\nChoices of:");
 	for(i = 0 ; i <= poolsindex && times[i] != 0;)
 	{
-		printf("\nFORMAT %c would take %.2f hours", (i + 'A'), times[i]);
+		printf("\nFORMAT %c would take %.2f hours\n", (i + 'A'), times[i]);
+		printf("%d pools with %d people each\n", poolsizechoice[i][1], poolsizechoice[i][0]);
 		i++;
 	}
 
