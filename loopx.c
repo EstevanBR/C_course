@@ -5,7 +5,7 @@
 //prints lines
 #include <stdio.h>
 #include <ctype.h>
-#define CHARPERROW 17
+#define CHARPERROW 47
 int vowel2x(int ch);
 int nospace(int ch);
 int main(void)
