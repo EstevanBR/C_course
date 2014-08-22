@@ -28,7 +28,7 @@ int main(void)
 }
 int vowel2x(int ch)
 {
-	if (ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U' || ch == 'Y')
+	if (ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U')// || ch == 'Y')
 	{
 		ch = 'X';
 	}
