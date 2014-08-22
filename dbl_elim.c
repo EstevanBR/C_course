@@ -1,6 +1,5 @@
 /************************************************
     * filename: dbl_elim.c
-    * Assignment: Module 3, Discussion Assignnment
     * Name: Estevan Hernandez
     * Date Created: June 25, 2014
     *
@@ -64,12 +63,12 @@ int main(void)
 	for (i = 0; i < amountofplayers; i++)
 	{
 		address = &playertags[i];
-		gettags(address, i);
+		//gettags(address, i);//uncomment for tags 1/2
 		playerid[i] = primes[i];
 	}
 	for (i = 0; i < amountofplayers; i++)
 	{
-		printf("player %d's tag is %s their id is %d\n", i+1, playertags[i], playerid[i]);
+		//printf("player %d's tag is %s their id is %d\n", i+1, playertags[i], playerid[i]);//uncomment for tags 2/2
 	}
 	
 	printf("Please enter desired \"Best of\" number for pools:\n");
@@ -127,7 +126,8 @@ int main(void)
 		printf("%d pools with %d people each\n", poolsizechoice[i][1], poolsizechoice[i][0]);
 		i++;
 	}
-	i--;
+	printf("\nA bracket of %d would take %.2f hrs.\n", bracketseed, bracketlength);
+	//i--;// idk why this code is here lol
 
 	printf("\n\n\nDISCLAIMER:\nALL CALCULATIONS ARE ESITMATES AND DO NOT FACTOR IN -\n"
 		"TIME TAKEN BETWEEN GAMES/SETS/MATCHES. EX: TIME TAKEN TO FIND PLAYERS.\n");
