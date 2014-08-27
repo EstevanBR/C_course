@@ -26,7 +26,7 @@ int main(void)
 	{
 		scanf("%d", &numbers[i]);
 	}
-	printf("done taking numbers.\n");
+	/* printf("done taking numbers.\n"); */
 	sort(numbers, BOUNDS);
 	for(i = 0; i < BOUNDS; i++)
 	{
@@ -35,22 +35,24 @@ int main(void)
 	return 0;
 }
 
-void sort(int * array, int limit)
+void sort(int * array, int limit) /* this is a recursive function I created. */
 {
 	int i;
 	int swap;
 
-	for(i = 0; i < limit; i++)
+	for(i = 0; i < limit; i++) /* goes through array */
 	{
-		if (array[i] <= array[0])
+		if (array[i] <= array[0]) /* if a larger number is found;*/
 		{
-			swap = array[i];
-			array[i] = *array;
-			*array = swap;
+			swap = array[i]; /* saves the larger element into swap */
+			array[i] = *array; /* saves [0] into [i] */
+			*array = swap; /* saves the larger element into [0] */
+			/* the above 2 lines of code serve to swap 2 elements. the larger with whatever is at index 0 */
 		}
 		printf("the lowest number so far is %d and i = %d\n", array[0], i);
 	}
 
-	if (limit >= 2)
-		sort(&array[1], limit - 1);
+	if (limit > 2) /* there would be no point in swapping elements when there are less than 2 left.*/
+		sort(&array[1], limit - 1); /* this calls the function again, but this time it sort of 'tricks' the function into thinking [1] is the new 0 */
+	/* limit is decremented to compensate, otherwise the array would try to go out of bounds and it would be messy */
 }

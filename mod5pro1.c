@@ -25,15 +25,15 @@ int main(void)
 	{
 		if (i % 2 == 0)  /* if number is even */
 		{
-			even[j] = i; /* add an array element */
-			j++;		 /* increment array index */
+			even[j] = i; /* save it into an array element */
+			j++;		 /* increment array index for next number to be saved*/
 		}
 	}
 
 	i = j - TOP;         /* creates a lower limit for the next loop which prints the top n even numbers */
 	printf("\nTop 5 even numbers are: ");
 
-	while(j-- > i)		 /* if j has not reached the lower limit established by i = j - TOP */
+	while(j-- > i)		 /* if j has not reached the lower limit established by i = j - TOP do print an element */
 		printf("%d ", even[j]);
 
 	printf("\n\n");

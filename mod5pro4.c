@@ -16,7 +16,7 @@
 
 #include <stdio.h>
 #define BOUNDS 10
-int largest(const int * array, const int limit);
+int largest(const int * array, const int limit); /* because there is no modification of data described in the program specs, I opted to use const for the array */
 int main(void)
 {
 	int numbers[BOUNDS];
@@ -33,14 +33,14 @@ int main(void)
 	return 0;
 }
 
-int largest(const int * array, const int limit)
+int largest(const int * array, const int limit) /*  */
 {
 	int i;
 	int largest;
 
-	for(i = 0; i < limit; i++)
+	for(i = 0; i < limit; i++) /* this code loops through the array */
 	{
-		if (array[i] > largest)
+		if (array[i] > largest) /* this code assigns the current element into 'largest' as long as the current element is bigger than the current int in 'largest' */
 			largest = array[i];
 	}
 
