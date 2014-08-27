@@ -22,6 +22,7 @@ int main(void)
 	int i;
 
 	printf("Please enter 5 integers and I will square them and print the results:\n");
+
 	for(i = 0; i < 5; i++) /* loops through array, storing user inputted integers*/
 	{
 		scanf("%d", &nums[i][0]);
@@ -40,6 +41,6 @@ int main(void)
 	}
 	printf("|______________|______________|\n\n");
 	printf("Done\n");
-	return 0;
 
+	return 0;
 }

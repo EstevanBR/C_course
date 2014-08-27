@@ -14,6 +14,7 @@
     *************************************************/
 
 #include <stdio.h>
+#include <string.h>
 #define BOUNDS 10
 int largest(int * array, int limit);
 int main(void)
@@ -21,14 +22,15 @@ int main(void)
 	int numbers[BOUNDS];
 	int i;
 
-	printf("Please enter 10 integer values and I print the highest number\n");
+	printf("Please enter a string and I print the highest number\n");
 
 	for(i = 0; i < BOUNDS; i++)
 	{
-		scanf("%d", &numbers[i]);
+		scanf("%c", &numbers[i]);
 	}
-	/* printf("done taking numbers.\n"); */
+
 	printf("the largest number is %d\n", largest(numbers, BOUNDS));
+
 	return 0;
 }
 int largest(int * array, int limit)
@@ -45,5 +47,6 @@ int largest(int * array, int limit)
 			*array = largest;
 		}
 	}
+
 	return largest;
 }

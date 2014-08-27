@@ -28,10 +28,11 @@ int main(void)
 	{
 		scanf("%d", &numbers[i]);
 	}
-	/* printf("done taking numbers.\n"); */
 	printf("the largest number is %d\n", largest(numbers, BOUNDS));
+
 	return 0;
 }
+
 int largest(const int * array, const int limit)
 {
 	int i;
@@ -42,5 +43,6 @@ int largest(const int * array, const int limit)
 		if (array[i] > largest)
 			largest = array[i];
 	}
+
 	return largest;
 }
