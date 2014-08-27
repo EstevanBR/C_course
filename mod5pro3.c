@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 #define BOUNDS 10
-void sort(int *pt, int limit);
+void sort(int * array, int limit);
 int main(void)
 {
 	int numbers[BOUNDS];
@@ -28,19 +28,27 @@ int main(void)
 	}
 	printf("done taking numbers.\n");
 	sort(numbers, BOUNDS);
+	for(i = 0; i < BOUNDS; i++)
+	{
+		printf("%d ", numbers[i]);
+	}
 	return 0;
 }
-void sort(int *pt, int limit)
+void sort(int * array, int limit)
 {
-	int num[10][2];
 	int i;
-	for (i = 0; i < limit; i++)
+	int swap;
+
+	for(i = 0; i <= limit; i++)
 	{
-
+		if (array[i] <= array[0])
+		{
+			swap = array[i];
+			array[i] = *array;
+			*array = swap;
+		}
+		printf("the lowest number so far is %d and i = %d\n", array[0], i);
 	}
-
-
-
-
-
+	if (limit >= 2)
+		sort(&array[1], limit - 1);
 }
