@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 #define BOUNDS 10
-void sort(int *pt, int limit)
+void sort(int *pt, int limit);
 int main(void)
 {
 	int numbers[BOUNDS];
@@ -22,14 +22,25 @@ int main(void)
 
 	printf("Please enter 10 integer values and I will sort them.\n");
 
-	for(i = 0; i <= BOUNDS; i++)
+	for(i = 0; i < BOUNDS; i++)
 	{
 		scanf("%d", &numbers[i]);
 	}
-	sort(&numbers, BOUNDS)
+	printf("done taking numbers.\n");
+	sort(numbers, BOUNDS);
 	return 0;
 }
-void sort(int *pt, int BOUNDS)
+void sort(int *pt, int limit)
 {
+	int num[10][2];
+	int i;
+	for (i = 0; i < limit; i++)
+	{
+
+	}
+
+
+
+
 
 }
