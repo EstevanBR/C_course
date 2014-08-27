@@ -34,6 +34,7 @@ int main(void)
 	}
 	return 0;
 }
+
 void sort(int * array, int limit)
 {
 	int i;
