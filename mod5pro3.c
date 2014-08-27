@@ -39,7 +39,7 @@ void sort(int * array, int limit)
 	int i;
 	int swap;
 
-	for(i = 0; i <= limit; i++)
+	for(i = 0; i < limit; i++)
 	{
 		if (array[i] <= array[0])
 		{
@@ -49,6 +49,7 @@ void sort(int * array, int limit)
 		}
 		printf("the lowest number so far is %d and i = %d\n", array[0], i);
 	}
+
 	if (limit >= 2)
 		sort(&array[1], limit - 1);
 }
