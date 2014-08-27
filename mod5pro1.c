@@ -19,6 +19,8 @@ int main(void)
 	int i;
 	int j;
 
+	printf("This program will find all the even numbers between 1 and 100\n"
+		"and then output the 5 biggest even numbers.\n");
 	for (i = 0, j = 0; i <= 100; i++)
 	{
 		if (i % 2 == 0)  /* if number is even */
