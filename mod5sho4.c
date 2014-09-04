@@ -10,9 +10,9 @@ int main(void)
 	char * ch;
 
 	ch = strcopy(namecopy, nameorig);
-	printf("nameorig is \"%s\"\n", nameorig);
-	printf("namecopy is \"%s\"\n", namecopy);
-	printf("and namecopy =\n%p\nor\n%p\n", ch, namecopy);
+	printf("nameorig is \"%s\" at %p\n", nameorig, &nameorig);
+	printf("namecopy is \"%s\" at %p\n", namecopy, &namecopy);
+	//printf("and namecopy =\n%p\nor\n%p\n", ch, namecopy);
 	return 0;
 }
 
