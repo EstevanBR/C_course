@@ -4,9 +4,10 @@ a version of strcopy using pointer notation */
 char *strcopy(char * restrict s1, const char * restrict s2);
 int main(void)
 {
-	int const length = 12;
-	char nameorig[length] = "Frank Zappa";
+	const int length = 12;
+	char nameorig[length] = {'F','r','a','n','k',' ','Z','a','p','p','a','\0'};
 	char namecopy[length];
+
 	char * ch;
 
 	ch = strcopy(namecopy, nameorig);
