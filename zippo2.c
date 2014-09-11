@@ -9,10 +9,13 @@ int main(void)
     printf("\n\n");
     printf("   pz = %p,    pz + 1 = %p\n",
                pz,         pz + 1);
+
     printf("pz[0] = %p, pz[0] + 1 = %p\n",
             pz[0],      pz[0] + 1);
+
     printf("  *pz = %p,   *pz + 1 = %p\n",
               *pz,        *pz + 1);
+    
     printf("pz[0][0] = %d\n", pz[0][0]);
     printf("  *pz[0] = %d\n", *pz[0]);
     printf("    **pz = %d\n", **pz);
