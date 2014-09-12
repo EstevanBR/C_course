@@ -3,8 +3,8 @@
 #include <stdio.h>
 #define MONTHS 12    // number of months in a year
 #define YEARS   5    // number of years of data
-float gettotal(int year, int month, float subtot, float total);
-void displayavg(int year, int month, float subtot, float total);
+float gettotal(int years, int months, int year, int month, float subtot, float total, float rain[years][months]);
+void displayavg(int years, int months, int year, int month, float subtot, float total, float rain[years][months]);
 int main(void)
 {
  // initializing rainfall data for 2000 - 2004
@@ -19,7 +19,7 @@ int main(void)
     int year, month;
     float subtot, total;
 
-    total = gettotal(year, month, subtot, total);
+    total = gettotal(YEARS, MONTHS, year, month, subtot, total, rain);
 
     printf("\nThe yearly average is %.1f inches.\n\n",
             total/YEARS);
@@ -27,12 +27,12 @@ int main(void)
     printf(" Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct ");
     printf(" Nov  Dec\n");
 
-
+    displayavg(YEARS, MONTHS, year, month, subtot, total, rain);
 
     return 0;
 }
 
-float gettotal(int year, int month, float subtot, float total)
+float gettotal(int years, int months, int year, int month, float subtot, float total, float rain)
 {
     printf(" YEAR    RAINFALL  (inches)\n");
     for (year = 0, total = 0; year < YEARS; year++)
@@ -46,7 +46,7 @@ float gettotal(int year, int month, float subtot, float total)
      return total;
 }
 
-void displayavg(int year, int month, float subtot, float total)
+void displayavg(int years, int months, int year, int month, float subtot, float total, float rain)
 {
     for (month = 0; month < MONTHS; month++)
     {             // for each month, sum rainfall over years
