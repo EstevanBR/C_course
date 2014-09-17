@@ -25,3 +25,5 @@ int main(void)
 24 = space occupied
 .5 = 5 characters printed
 s = string
+
+*/
