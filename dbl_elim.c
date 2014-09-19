@@ -135,15 +135,6 @@ int main(void)
 	return 0;
 }
 
-
-
-
-
-
-
-
-
-
 int check_if_odd(int num)
 {
 	while (num % 2 == 0)
