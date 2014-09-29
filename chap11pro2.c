@@ -25,7 +25,12 @@ int main(void)
 
 	putchar('\"');
 	for(i = 0; i < imax; i++)
+	{
+		if (array[i] != '\0')
 		putchar(array[i]);
+	else
+		break;
+	}
 	putchar('\"');
 
 	printf("\nthe address is %p\n", first);
@@ -37,7 +42,13 @@ char *fetch(const int n, char array[n])
 	int i;
 	for(i = 0; i < n; i++)
 	{
-		array[i] = getchar();
+		if (isspace(array[i]) == 0)
+			array[i] = getchar();
+		else
+		{
+			array[i] = '\0';
+			break;
+		}
 		//printf("%d\n", i);
 	}
 
