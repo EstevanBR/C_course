@@ -11,6 +11,7 @@ int main(void)
     int i = 0;
 
     printf("Enter %d words beginning with q:\n", LIMIT);
+    
     while (i < LIMIT && gets(temporary))
     {
         if (temporary[0] != 'q')
