@@ -18,20 +18,22 @@ int main(void)
 
 	printf("Please enter how many characters you are doing to type: ");
 	scanf("%d", &imax);
+	while(getchar() != '\n')
+		continue;
 	puts("Thank you very much");
 
 	char array[imax];
 	char* first = fetch(imax, array);
 
-	putchar('\"');
-	for(i = 0; i < imax; i++)
+	for(i = 0; i < imax ; i++)
 	{
-		if (array[i] != '\0')
-		putchar(array[i]);
-	else
-		break;
+		putchar('_');
 	}
-	putchar('\"');
+	putchar('\n');
+	for(i = 0; i < imax ; i++)
+	{
+		putchar(array[i]);
+	}
 
 	printf("\nthe address is %p\n", first);
 
@@ -40,17 +42,18 @@ int main(void)
 char *fetch(const int n, char array[n])
 {
 	int i;
+	char ch;
 	for(i = 0; i < n; i++)
 	{
-		if (isspace(array[i]) == 0)
-			array[i] = getchar();
-		else
+		ch = getchar();
+		if (isspace(ch))
 		{
-			array[i] = '\0';
-			break;
-		}
-		//printf("%d\n", i);
+			//array[i] = '\0';
+			i = n;
+		}else
+			array[i] = ch;
 	}
+	
 
 	return array;
 }
