@@ -7,37 +7,67 @@ Test the function in a complete program that uses a loop to provide input values
 */
 #include <stdio.h>
 #include <string.h>
-char *string_in(char* bigspoon, char* littlespoon);
+char *string_in (const char *haystack, const char *needle);
 int main(void)
 {
-	char big[] = {"welcome to the krusty krab, we hope you have a great time."};
-	char little[] = {"hope"};
-	char *letter = string_in(big, little);
+	char big[100];
+	char little[100];
+	char *letter;
 
-	if (letter != NULL)
-		printf("%*s\nis in\n"
-			   "%s\n"
-			   "%*c\n", letter - big + 1, little, big, letter - big + 1, '^');
+	do
+	{
+		printf("please enter a string [or just press enter without typing anything to exit.\n");
+		gets(big);
+		if(big[0] == '\0')
+		{
+			break;
+		}
+		printf("now enter a smaller string [or just press enter without typing anything to exit.\n");
+		gets(little);
+		if(little[0] == '\0')
+		{
+			break;
+		}
+
+		letter = string_in(big, little);
+
+		if (letter != NULL)
+			printf("\"%s\"\nis in\n\"%s\"\nstarting at\n\"%s\"\n", little, big, letter);
+	}while(1);
+
+	printf("Done\n");
+
 
 	return 0;
 }
 
-char *string_in(char* bigspoon, char* littlespoon)
+char *string_in (const char *haystack, const char *needle)//can use strlen, strncmp
 {
-	int i = 0;
-	int j = 0;
-	char* point = NULL;
-	while(i++ < strlen(littlespoon))
-	{
-		while(j++ < strlen(bigspoon))
-		{
-			if (littlespoon[0] == bigspoon[j])
-			{
-				point = &bigspoon[j];
-				return point;
-			}
-		}
-	}
+	char* point = (char *) haystack;
+	int n = strlen(needle);
 
-	return point;
+	while((point = strchr(point, *needle)) != 0) //while character is in first position of string
+	{
+		if (strncmp(point, needle, n) == 0)
+			return point;
+		point++;
+	}
+	return NULL;
 }
+
+/*
+char *string_in (const char *haystack, const char *needle)//can use strlen, strncmp
+{
+	char *point = (char*) haystack;
+	int len = strlen(needle);
+
+	while((point = strchr (point, *needle)) != 0)//loop is terminted when strchr = 0 or character is found in string
+		{
+			if (strncmp (point, needle, len) == 0)
+				return point;
+			point++;
+		}
+
+	return NULL;
+}
+*/
