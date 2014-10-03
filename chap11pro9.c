@@ -26,4 +26,26 @@ int main(void)
 }
 void spacedestroyer(char string[])
 {
+	char c = ' ';
+	char* write;
+	char* read = write = string;
+	while(*read)//perform the following code until read is pointing at a NULL element
+	{
+		*write = *read++; //set write to be the same as read, first loop through they both point to the first element.
+		write += (*write != c); //write pointer is incremented by 1 only if write is not a space 
+	}
+	*write = '\0';
 }
+/*
+void spacedestroyer(char string[])
+{
+	char c = ' ';
+	char* read;
+	char* write = read = string;
+	while(*read){
+		*write = *read++;
+		write += (*write != c);
+	}
+	*write = '\0';
+}
+*/
