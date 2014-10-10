@@ -1,7 +1,7 @@
 /* diceroll.c -- dice role simulation*/
-#include "diceroll.h"
 #include <stdio.h>
 #include <stdlib.h>           /* for library rand()   */
+#include "diceroll.h"
 
 int roll_count  = 0;          /* external linkage     */
 
