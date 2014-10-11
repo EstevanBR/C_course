@@ -43,13 +43,7 @@ int main(void)
 	while(choice != 'q')
 	{
 		choice = 0;
-		printf("Choose an operation\n");
-		printf("\ta: print the original list of strings,\n"
-			   "\tb: print the strings in ASCII collating sequence,\n"
-			   "\tc: print the strings in order of increasing length,\n"
-			   "\td: print the strings in order of the length of the first word in the string,\n"
-			   "\te: and quit.\n");
-		choice = choi_val(choice);
+		choice = menu();
 
 		printf("Choice is %hhd\n", choice);
 		switch(choice){
@@ -89,7 +83,7 @@ int getstrings(char str[MAXSTR][100])
 	return i-1;
 }
 
-/*char menu(void)
+char menu(void)
 {
 	char choice;
 	printf("Choose an operation\n");
@@ -102,7 +96,6 @@ int getstrings(char str[MAXSTR][100])
 	choice = getchar();
 	return choice;
 }
-*/
 void print_org(int n, char str[MAXSTR][100])
 {
 	int i;

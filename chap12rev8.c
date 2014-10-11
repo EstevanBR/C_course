@@ -3,6 +3,10 @@ char color= 'B';
 void first(void);
 void second(void);
 
+static int plink;
+
+int value_ct(const int arr[], int value, int n);
+
 int main(void)
 {
   extern char color;
