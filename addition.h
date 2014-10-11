@@ -1,10 +1,10 @@
 /************************************************
-    * filename: addition.h
-    * Assignment: Module 6, Programming Assignnment 4
-    * Name: Estevan Hernandez
-    * Date Created: October 11, 2014
-    *
-    * Write a calculator program that adds and subtracts. Prompt the user to enter two values and select an operation to perform.
+	* filename: addition.h
+	* Assignment: Module 6, Programming Assignnment 4
+	* Name: Estevan Hernandez
+	* Date Created: October 11, 2014
+	*
+	* Write a calculator program that adds and subtracts. Prompt the user to enter two values and select an operation to perform.
 	* Incorporate a program with five modules and functions named as follows:
 	* a.	calc_driver.c - contains the function main() and the user interface
 	* b.	> addition.h - contains the prototype for a function named add() <

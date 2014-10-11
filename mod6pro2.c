@@ -1,10 +1,10 @@
 /************************************************
-    * filename: mod6pro2.c
-    * Assignment: Module 6, Programming Assignnment 2
-    * Name: Estevan Hernandez
-    * Date Created: October 11, 2014
-    *
-    * Write a program that creates a structure template with the following data fields.
+	* filename: mod6pro2.c
+	* Assignment: Module 6, Programming Assignnment 2
+	* Name: Estevan Hernandez
+	* Date Created: October 11, 2014
+	*
+	* Write a program that creates a structure template with the following data fields.
 	* The program should then prompt the user to enter the data to populate the structure.
 	* Finally, use printf() to display the information entered by the user.
 	* a.	Account number
@@ -14,7 +14,7 @@
 	* e.	Account balances
 	* f.	Account credit limit
 	* g.	Account name
-    *************************************************/
+	*************************************************/
 
 #include <stdio.h>
 #include <string.h>
@@ -35,7 +35,7 @@ int main(void){
 	printf("Please enter the following info and press enter-\n");
 	printf("Your account number:\n");
 	scanf("%lld", &bank.acct_num);
-	while(getchar() != '\n')
+	while(getchar() != '\n') /* clear newline from buffer */
 		continue;
 	printf("Please enter you street address (ex: 123 Road St):\n");
 	fgets(bank.address, 100, stdin);
@@ -52,8 +52,8 @@ int main(void){
 	printf("and lastly, the name of the person:\n");
 	fgets(bank.name, 100, stdin);
 
-	/* gets is unsafe because of the possibility of overflow,
-	so I used fgets instead, but because I did, the '\n' characer is a part of the each of the strings,
+	/* gets() is unsafe because of the possibility of overflow,
+	so I used fgets() instead, but because I did, the '\n' characer is a part of the each of the strings,
 	so I need to replace the newline with a null,
 	the following code does that by using strlen() to determine the length (including '\0' or null),
 	and replacing the character before that, which is presumably '\n' with '\0'
