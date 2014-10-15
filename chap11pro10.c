@@ -72,13 +72,13 @@ int getstrings(char str[MAXSTR][100])
 	int j;
 	char *pw;
 	printf("Please enter up to 10 strings or press control+D\n");
-	for(i=0; ((gets(str[i])) != '\0') && i<MAXSTR; i++);
+	for(i=0; ((gets(str[i])) != NULL) && i<MAXSTR; i++);
 	//flush
-	if(i < 9)
-	{
-		while(getchar() == -1)
-			continue;
-	}
+	//if(i < 9)
+	//{
+	//	while(getchar() == -1)
+	//		continue;
+	//}
 
 	return i-1;
 }
