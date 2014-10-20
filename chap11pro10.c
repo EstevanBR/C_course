@@ -45,7 +45,7 @@ int main(void)
 		choice = 0;
 		choice = menu();
 
-		printf("Choice is %hhd\n", choice);
+		printf("Choice is %d\n", choice);
 		switch(choice){
 			case 'a': print_org(n, str);
 			break;
@@ -79,7 +79,9 @@ int getstrings(char str[MAXSTR][100])
 	//	while(getchar() == -1)
 	//		continue;
 	//}
-	fflush(NULL);
+
+	printf("EOF is %d\n", EOF);
+	
 	return i-1;
 }
 
@@ -92,8 +94,10 @@ char menu(void)
 		   "c: print the strings in order of increasing length,\n"
 		   "d: print the strings in order of the length of the first word in the string,\n"
 		   "e: and quit.\n");
+	//fflush(stdout);
+	//while(getchar() != EOF)
+	//	choice = getchar();
 
-	choice = getchar();
 	return choice;
 }
 void print_org(int n, char str[MAXSTR][100])
