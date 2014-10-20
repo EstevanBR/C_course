@@ -112,6 +112,12 @@ void print_asc(int n, char str[MAXSTR][100])
 	int i;
 	int j;
 
+
+
+
+
+
+	
 }
 void print_len(int n, char str[MAXSTR][100])
 {
@@ -119,7 +125,7 @@ void print_len(int n, char str[MAXSTR][100])
 }
 void print_wrd(int n, char str[MAXSTR][100])
 {
-
+	
 }
 
 char choi_val(char c)
