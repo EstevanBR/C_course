@@ -17,7 +17,7 @@ int main(void)
     puts("Enter words to add to the file; press the Enter");
     puts("key at the beginning of a line to terminate.");
     while (gets(words) != NULL  && words[0] != '\0') //while gets does not return null or EOF and words is not a null char
-        fprintf(fp, "%s ", words); //print string words into the file
+        fprintf(fp, "%s ", words); //print the string from the file into the array words
 
     puts("File contents:");
     rewind(fp);           /* go back to beginning of file */
@@ -26,9 +26,11 @@ int main(void)
 
     if (fclose(fp) != 0)
         fprintf(stderr,"Error closing file\n");
+
     fp = fopen("wordy", "r");
     printf("%p\n", fp);
     fclose(fp);
+    
     fp = fopen("wordy", "a+");
     printf("%p", fp);
     fclose(fp);

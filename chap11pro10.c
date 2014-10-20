@@ -79,7 +79,7 @@ int getstrings(char str[MAXSTR][100])
 	//	while(getchar() == -1)
 	//		continue;
 	//}
-
+	fflush(NULL);
 	return i-1;
 }
 
