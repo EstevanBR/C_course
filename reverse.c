@@ -30,7 +30,7 @@ int main(void)
       if (ch == '\r')
             putchar('\n');
          else
-             putchar(ch);       
+             putchar(ch);      
    }
    putchar('\n');
    fclose(fp);

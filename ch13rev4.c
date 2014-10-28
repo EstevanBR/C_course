@@ -23,7 +23,7 @@ int main(int argc, char const *argv[])
 		printf("needs to have 1 or 0 arguments, aborting program...\007\n");
 		exit(0);
 	}
-	for(i = 0, sum = 0; (fscanf(fp, "%f", &sink)) != EOF; i++)
+	for(i = 0, sum = 0; (fscanf(fp, "%f", &sink)) != EOF && i<; i++)
 	{
 		printf("i is %d\n", i);
 		sum+=sink;
