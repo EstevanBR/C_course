@@ -18,10 +18,11 @@ For example, suppose you start with this data:
 int main(void)
 {
 	int numbers[20][30];
-	char letters[20][30];
+	char letters[20][31];
 	char buffer[31];
 	int ch;
 	int i;
+	int j;
 	FILE *fp, *fp2;
 	fp = fopen("grid.txt", "r");
 	fp2 = fopen("grid.out.txt", "w");
@@ -34,40 +35,55 @@ int main(void)
 	}
 	for (i = 0; i < 20; i++)
 	{
-		sprintf(buffer, "%i", *numbers[i]);
-		strncpy(&letters[i][0], buffer, 30);
-	}
-	for (i = 0; i < 20*31; i++)
-	{
-		switch(letters[0][i])
+		for (j = 0; j < 30; j++)
 		{
-			case '0': letters[0][i] = '.';
-			break;
-			case '1': letters[0][i] = ',';
-			break;
-			case '2': letters[0][i] = ':';
-			break;
-			case '3': letters[0][i] = ';';
-			break;
-			case '4': letters[0][i] = '\"';
-			break;
-			case '5': letters[0][i] = '*';
-			break;
-			case '6': letters[0][i] = '&';
-			break;
-			case '7': letters[0][i] = '%';
-			break;
-			case '8': letters[0][i] = '@';
-			break;
-			case '9': letters[0][i] = '#';
-			break;
+			sprintf(buffer, "%i", numbers[i][j]);
+			strncpy(&letters[i][0], buffer, 30);
 		}
 	}
-	printf("here:\n");
-	for(i = 0; i < 20*31; i++)
+	for (i = 0; i < 20; i++)
 	{
-		printf("%i", (int) letters[0][i]);
+		for (j = 0; j < 31; j++)
+		{
+			switch(letters[i][j])
+			{
+				case '0': letters[i][j] = '.';
+				break;
+				case '1': letters[i][j] = ',';
+				break;
+				case '2': letters[i][j] = ':';
+				break;
+				case '3': letters[i][j] = ';';
+				break;
+				case '4': letters[i][j] = '\"';
+				break;
+				case '5': letters[i][j] = '*';
+				break;
+				case '6': letters[i][j] = '&';
+				break;
+				case '7': letters[i][j] = '%';
+				break;
+				case '8': letters[i][j] = '@';
+				break;
+				case '9': letters[i][j] = '#';
+				break;
+			}
+		}
+		//if (j == 30)
+		//	letters[i][30] = '\0';
 	}
+	printf("here:\n");
+	for(i = 0; i < 20; i++)
+	{
+		for (j = 0; j < 30; j++)
+		{
+			//printf("%c", letters[i][j]);
+			//fprintf(fp2, "%c", letters[i][j]);
+		}
+	}
+
+	fwrite(letters, 1L, 20*30, fp2);
 
 	return 0;
 }
+
