@@ -20,6 +20,7 @@ int main(void)
 	int numbers[20][30];
 	char letters[20][31];
 	char buffer[31];
+	int temp;
 	int ch;
 	int i;
 	int j;
@@ -28,62 +29,15 @@ int main(void)
 	fp2 = fopen("grid.out.txt", "w");
 	for (i = 0; i < 20*30; i++)
 	{
-		fscanf(fp, "%i", &numbers[0][i]);
-		printf("%i", numbers[0][i]);
+		fscanf(fp, "%i", &temp);
+
+		fprintf(fp2, "%c", temp);
+		
 		if (i % 30 == 29)
-			printf("\n");
+			fprintf(fp2, "%c", '\0');
 	}
-	for (i = 0; i < 20; i++)
-	{
-		for (j = 0; j < 30; j++)
-		{
-			sprintf(buffer, "%i", numbers[i][j]);
-			strncpy(&letters[i][0], buffer, 30);
-		}
-	}
-	for (i = 0; i < 20; i++)
-	{
-		for (j = 0; j < 31; j++)
-		{
-			switch(letters[i][j])
-			{
-				case '0': letters[i][j] = '.';
-				break;
-				case '1': letters[i][j] = ',';
-				break;
-				case '2': letters[i][j] = ':';
-				break;
-				case '3': letters[i][j] = ';';
-				break;
-				case '4': letters[i][j] = '\"';
-				break;
-				case '5': letters[i][j] = '*';
-				break;
-				case '6': letters[i][j] = '&';
-				break;
-				case '7': letters[i][j] = '%';
-				break;
-				case '8': letters[i][j] = '@';
-				break;
-				case '9': letters[i][j] = '#';
-				break;
-			}
-		}
-		//if (j == 30)
-		//	letters[i][30] = '\0';
-	}
-	printf("here:\n");
-	for(i = 0; i < 20; i++)
-	{
-		for (j = 0; j < 30; j++)
-		{
-			//printf("%c", letters[i][j]);
-			//fprintf(fp2, "%c", letters[i][j]);
-		}
-	}
-
-	fwrite(letters, 1L, 20*30, fp2);
-
+	//for (i = 0; i < 20 ; i++)
+	//	printf("%s\n", );
 	return 0;
 }
 
