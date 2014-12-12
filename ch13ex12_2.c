@@ -27,17 +27,12 @@ int main(void)
 	FILE *fp, *fp2;
 	fp = fopen("grid.txt", "r");
 	fp2 = fopen("grid.out.txt", "w");
+	
 	for (i = 0; i < 20*30; i++)
 	{
-		fscanf(fp, "%i", &temp);
-
-		fprintf(fp2, "%c", temp);
 		
-		if (i % 30 == 29)
-			fprintf(fp2, "%c", '\0');
 	}
-	//for (i = 0; i < 20 ; i++)
-	//	printf("%s\n", );
+
 	return 0;
 }
 
